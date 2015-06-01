@@ -7,9 +7,9 @@ require_relative 'pcap_tools/pcap_tools_http_message_row_mapper_factory'
 class TcpdumpHttpMessageListener
   WORKING_DIRECTORY = './tmp/'
 
-  def initialize(participants, ports_to_monitor)
+  def initialize(participants, ports_to_monitor, capture_pids)
     @http_message_mapper_factory = PcapToolsHttpMessageRowMapperFactory.new(participants)
-    @tcpdump_network_traffic_writer = InteractiveTcpdumpNetworkTrafficWriter.new(ports_to_monitor)
+    @tcpdump_network_traffic_writer = InteractiveTcpdumpNetworkTrafficWriter.new(ports_to_monitor, capture_pids)
     @pcap_tools_http_message_parser = PcapToolsHttpMessageParser.new
   end
 

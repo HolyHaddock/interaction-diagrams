@@ -11,7 +11,8 @@ configuration = {
     :output_directory => './out',
     :display_request_bodies => true,
     :display_response_bodies => true,
-    :display_cookies => true
+    :display_cookies => true,
+    :merge_by_pid => false
 }
 
 OptionParser.new do |o|
@@ -35,6 +36,10 @@ OptionParser.new do |o|
 
   o.on('--hide_cookies', "Don't display cookie information") do
     configuration[:display_cookies] = false
+  end
+
+  o.on('--merge_by_pid', "Use an OS X extension to absorb ports with no participant into participants with the same pid.") do
+    configuration[:merge_by_pid] = true
   end
 
   participants = configuration[:participants].map { |participant| participant[:name] }
